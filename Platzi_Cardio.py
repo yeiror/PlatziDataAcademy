@@ -1,4 +1,6 @@
 import os
+import math
+import random
 
 def borrarPantalla(): 
     if os.name == "posix":
@@ -91,17 +93,69 @@ def run():
                 print("El jugador 1 es el ganador\n")
             else:
                 print("El jugador 2 es el ganador\n")
-                
-
-
-                    
-            pass
+            
         elif menu==3:
-            pass
+            borrarPantalla()
+            while(True):
+                print("""Bienvenido al conversor de Millas a Km 
+                Escoge una opción en pantalla:
+                1- Convertir de Km a Millas
+                2- Convertir de Millas a Km 
+                0- Para salir""")
+                opcion=int(input())
+                if(opcion==1):
+                    km=float(input("Ingrese la cantidad de Km que desea convertir: "))
+                    print(km, " kilómetros equivalen a ", km/1.609344, " millas")
+                   
+                elif(opcion==2):
+                    millas=float(input("Ingrese la cantidad de millas que desea convertir: "))
+                    print(millas, " millas equivalen a ", millas*1.609344, " kilómetros")
+                    
+                elif(opcion==0):
+                    print("Muchas gracias por usar el conversor Bye")
+                    break
+                else:
+                    print("Has ingresado una opción incorrecta Vuelve a ingresar ")
+                
         elif menu==4:
-            pass
+            borrarPantalla()
+            while(True):
+                print("""Bienvenido a la calculadora de Volúmenes 
+                Escoge una opción en pantalla:
+                1- Volúmen de un cilindro
+                2- Volúmen de la esfera 
+                0- Para salir""")
+                opcion=int(input())
+                if(opcion==1):
+                    radio=float(input("Ingresa el radio de la base del cilindro en cm "))
+                    h=float(input("Ingresa la altura del cilindro en cm "))
+                    print("El volumen del cilindro es", round(math.pi*radio*radio*h,2))
+                   
+                elif(opcion==2):
+                    radio=float(input("Ingresa el radio de la esfera cilindro en cm "))
+                    print("El volumen del cilindro es", round((4/3)*math.pi*radio*radio*radio,2))
+                    
+                elif(opcion==0):
+                    print("Muchas gracias por usar la calculadora de volúmenes, Bye")
+                    break
+                else:
+                    print("Has ingresado una opción incorrecta Vuelve a ingresar ")
+       
         elif menu==5:
-            pass
+            print("Bienvenido al juego de rangos cambiantes")
+            lim_final=random.randint(0,101)
+            lim_init=random.randint(0,lim_final+1)
+            while True:
+                valor=int(input("ingresa un valor entre 0 y 100 para saber si está en el rango"))
+                if(lim_init<=valor<=lim_final):
+                    print("El número está en el rango ", lim_init," - " ,lim_final )
+                    break
+                elif(lim_final<valor):
+                    print("Te pasaste, sigue intentando") 
+                    
+                elif(lim_init>valor):
+                    print("Estas por debajo del rango")
+
         elif menu==0:
             print("Has escogido terminar el programa, Bye")
             return False
